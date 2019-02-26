@@ -14,7 +14,7 @@ namespace ColorSwitch.Windows {
 			graphics.PreferMultiSampling = true;
 			graphics.ApplyChanges();
 
-			IsMouseVisible = true;
+			IsMouseVisible = true;			
 		}
 
 		protected override void Draw(GameTime gameTime) {
