@@ -1,24 +1,22 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using ColorSwitch.Windows.GameCore.Entities;
+using Microsoft.Xna.Framework;
 using Nez;
 
-namespace ColorSwitch.Windows.GameCore.Entities {
-	public class Physics {
+namespace ColorSwitch.Windows.GameCore.Components {
+	public class PlayerPhysics : Component {
 
-		public Physics(Entity entity) {
-			this.entity = entity;
-		}
+		private bool impulseHandling;
+		private float impulseAccelerator;
+		private static float ImpulseSpeed => 10f;
+
+        public PlayerPhysics() : base() { }
 
 		public void ApplyImpulse() {
 			impulseAccelerator = 0;
 			impulseHandling = true;
-		}
-        
-        private Entity entity;
-        private bool impulseHandling;
-		private float impulseAccelerator;
-
-		private static float ImpulseSpeed => 10f;
-
+		}  
+     
 		public void Update() {
 			if (impulseHandling) {
 				if (impulseAccelerator < 10f) {
@@ -32,6 +30,12 @@ namespace ColorSwitch.Windows.GameCore.Entities {
 				entity.transform.position += new Vector2(0, ImpulseSpeed - impulseAccelerator);
                 if (impulseAccelerator > 0)
 					impulseAccelerator -= 0.5f;
+			}			
+		}
+
+		public void HandleColorEntities(List<ColorEntity> colorEntities) {
+			foreach (var colorEntity in colorEntities) {
+				colorEntity.OnTouch(entity);
 			}
 		}
 	}

@@ -18,6 +18,7 @@ namespace ColorSwitch.Windows {
 #pragma warning disable 0618 // disable obsolete warning
             scene = Scene.createWithDefaultRenderer<GameScene>(Color.Black);
 #pragma warning restore 0618
+	        Core.debugRenderEnabled = true;
         }
     }
 }
