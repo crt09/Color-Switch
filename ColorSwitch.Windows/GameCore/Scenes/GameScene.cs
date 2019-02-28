@@ -13,6 +13,6 @@ namespace ColorSwitch.Windows.GameCore.Scenes {
 
 			addEntity(colorSwitcher);
 			addEntity(player);
-        }
+		}
 	}
 }

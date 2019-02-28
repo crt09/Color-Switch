@@ -10,13 +10,13 @@ namespace ColorSwitch.Windows.GameCore.Components {
 		private float impulseAccelerator;
 		private static float ImpulseSpeed => 10f;
 
-        public PlayerPhysics() : base() { }
+		public PlayerPhysics() : base() { }
 
 		public void ApplyImpulse() {
 			impulseAccelerator = 0;
 			impulseHandling = true;
 		}  
-     
+	 
 		public void Update() {
 			if (impulseHandling) {
 				if (impulseAccelerator < 10f) {
@@ -27,7 +27,7 @@ namespace ColorSwitch.Windows.GameCore.Components {
 				}
 			} else {
 				entity.transform.position += new Vector2(0, ImpulseSpeed - impulseAccelerator);
-                if (impulseAccelerator > 0)
+				if (impulseAccelerator > 0)
 					impulseAccelerator -= 0.5f;
 			}			
 		}

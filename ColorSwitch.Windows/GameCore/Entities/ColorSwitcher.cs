@@ -17,7 +17,7 @@ namespace ColorSwitch.Windows.GameCore.Entities {
 			addComponent(switcherSprite);
 
 			var collider = new CircleCollider(switcherTexture.Height / 2);
-            addComponent(collider);
+			addComponent(collider);
 
 			transform.position = new Vector2(400, 100);
 		}
