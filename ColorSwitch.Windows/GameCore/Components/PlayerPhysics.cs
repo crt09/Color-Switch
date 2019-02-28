@@ -25,8 +25,7 @@ namespace ColorSwitch.Windows.GameCore.Components {
 				} else {
 					impulseHandling = false;
 				}
-			}
-			else {
+			} else {
 				entity.transform.position += new Vector2(0, ImpulseSpeed - impulseAccelerator);
                 if (impulseAccelerator > 0)
 					impulseAccelerator -= 0.5f;
@@ -34,6 +33,12 @@ namespace ColorSwitch.Windows.GameCore.Components {
 		}
 
 		public void HandleColorEntities(List<ColorEntity> colorEntities) {
+			for (int i = 0; i < colorEntities.Count; i++) {
+				if (colorEntities[i].isDestroyed) {
+					colorEntities.RemoveAt(i); 
+					i--;
+				}
+			}
 			foreach (var colorEntity in colorEntities) {
 				colorEntity.OnTouch(entity);
 			}
