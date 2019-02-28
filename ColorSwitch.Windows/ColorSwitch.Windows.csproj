@@ -43,6 +43,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="GameCore\Entities\Physics.cs" />
     <Compile Include="GameCore\Entities\Player.cs" />
     <Compile Include="GameCore\Scenes\GameScene.cs" />
     <Compile Include="MainGame.cs" />
