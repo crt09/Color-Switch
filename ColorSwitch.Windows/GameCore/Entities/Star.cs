@@ -4,22 +4,22 @@ using Nez;
 using Nez.Sprites;
 
 namespace ColorSwitch.Windows.GameCore.Entities {
-	public class ColorSwitcher : TouchableEntity {
+	public class Star : TouchableEntity {
 
-		private Texture2D switcherTexture;
-		private Sprite switcherSprite;
+		private Texture2D starTexture;
+		private Sprite starSprite;
 
-		public ColorSwitcher() : base("color-switcher") { }
+		public Star() : base("star") { }
 
 		public override void onAddedToScene() {
-			switcherTexture = scene.content.Load<Texture2D>("ColorEntities/color_switcher");
-			switcherSprite = new Sprite(switcherTexture);
-			addComponent(switcherSprite);
+			starTexture = scene.content.Load<Texture2D>("ColorEntities/star");
+			starSprite = new Sprite(starTexture);
+			addComponent(starSprite);
 
-			var collider = new CircleCollider(switcherTexture.Height / 2);
+			var collider = new CircleCollider(starTexture.Height / 2);
 			addComponent(collider);
 
-			transform.position = new Vector2(400, 100);
+			transform.position = new Vector2(400, 300);
 		}
 
 		public override void SendState(Entity sender) {
@@ -27,8 +27,7 @@ namespace ColorSwitch.Windows.GameCore.Entities {
 				var switcherCollider = getComponent<Collider>();
 				var playerCollider = player.getComponent<Collider>();
 				if (switcherCollider.collidesWith(playerCollider, out CollisionResult result)) {
-					// TODO: switching logic
-					player.color = Color.Red;
+					// TODO: score logic
 					destroy();
 				}
 			}

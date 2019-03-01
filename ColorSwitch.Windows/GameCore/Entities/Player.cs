@@ -14,14 +14,14 @@ namespace ColorSwitch.Windows.GameCore.Entities {
 			set => playerSprite.color = value;
 		}
 
-		public List<ColorEntity> colorEntities;
+		public List<TouchableEntity> touchableEntities;
 
 		private bool gameStarted = false;
 		private Texture2D playerTexture;
 		private Sprite playerSprite;
 
 		public Player() : base("player") {
-			colorEntities = new List<ColorEntity>();
+			touchableEntities = new List<TouchableEntity>();
 		}
 
 		public override void onAddedToScene() {		
@@ -45,7 +45,7 @@ namespace ColorSwitch.Windows.GameCore.Entities {
 
 			if(gameStarted)
 				physics.Update();
-			physics.HandleColorEntities(colorEntities);
+			physics.HandleTouchableEntities(touchableEntities);
 
 			if (Input.isKeyPressed(Keys.Up) || Input.leftMouseButtonPressed) {
 				gameStarted = true;

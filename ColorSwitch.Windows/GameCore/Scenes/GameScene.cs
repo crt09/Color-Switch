@@ -9,10 +9,13 @@ namespace ColorSwitch.Windows.GameCore.Scenes {
 		public override void initialize() {			
 			var player = new Player();
 			var colorSwitcher = new ColorSwitcher();
-			player.colorEntities.Add(colorSwitcher);
+			var star = new Star();
+			player.touchableEntities.Add(colorSwitcher);
+			player.touchableEntities.Add(star);
 
-			addEntity(colorSwitcher);
 			addEntity(player);
+			addEntity(colorSwitcher);
+			addEntity(star);
 		}
 	}
 }

@@ -32,7 +32,7 @@ namespace ColorSwitch.Windows.GameCore.Components {
 			}			
 		}
 
-		public void HandleColorEntities(List<ColorEntity> colorEntities) {
+		public void HandleTouchableEntities(List<TouchableEntity> colorEntities) {
 			for (int i = 0; i < colorEntities.Count; i++) {
 				if (colorEntities[i].isDestroyed) {
 					colorEntities.RemoveAt(i); 
@@ -40,7 +40,7 @@ namespace ColorSwitch.Windows.GameCore.Components {
 				}
 			}
 			foreach (var colorEntity in colorEntities) {
-				colorEntity.OnTouch(entity);
+				colorEntity.SendState(entity);
 			}
 		}
 	}

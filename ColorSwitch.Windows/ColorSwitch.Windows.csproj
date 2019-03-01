@@ -44,7 +44,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="GameCore\Components\PlayerPhysics.cs" />
-    <Compile Include="GameCore\Entities\ColorEntity.cs" />
+    <Compile Include="GameCore\Entities\Star.cs" />
+    <Compile Include="GameCore\Entities\TouchableEntity.cs" />
     <Compile Include="GameCore\Entities\ColorSwitcher.cs" />
     <Compile Include="GameCore\Entities\Player.cs" />
     <Compile Include="GameCore\Scenes\GameScene.cs" />
