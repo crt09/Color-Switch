@@ -34,7 +34,7 @@ namespace ColorSwitch.Windows.GameCore.Entities.Enemies {
 				foreach (var info in getComponent<ColorCirclePhysics>().colorInfo) {
 					if (playerCollider.collidesWith(info.collider, out CollisionResult result)
 					    && player.color != info.color) {
-						// TODO: destroy player
+						player.kill();
 					}
 				}				
 			}

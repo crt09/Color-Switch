@@ -53,5 +53,9 @@ namespace ColorSwitch.Windows.GameCore.Entities {
 				physics.ApplyImpulse();
 			}			
 		}
+
+		public void kill() {
+			destroy();
+		}
 	}
 }

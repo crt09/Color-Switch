@@ -32,13 +32,8 @@ namespace ColorSwitch.Windows.GameCore.Entities.Enemies {
 
 				var collider = new PolygonCollider(sectorPoints[i].ToArray());
 				entity.addComponent(collider);
-				Color color = Color.Black;
-				switch (i) {
-					case 0: color = GameColor.Violet; break;
-					case 1: color = GameColor.Red; break;
-					case 2: color = GameColor.Blue; break;
-					case 3: color = GameColor.Yellow; break;
-				}
+
+				Color color = GameColor.GetColorById((uint)i);
 				colorInfo.Add(new ColorInfo(color, collider));
 			}
 		}
