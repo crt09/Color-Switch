@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Nez;
 using Nez.Sprites;
 
-namespace ColorSwitch.Windows.GameCore.Entities {
+namespace ColorSwitch.Windows.GameCore.Entities.Special {
 	public class Star : TouchableEntity {
 
 		private Texture2D starTexture;

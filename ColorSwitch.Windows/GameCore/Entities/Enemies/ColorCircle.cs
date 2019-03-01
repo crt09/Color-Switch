@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ColorSwitch.Windows.GameCore.Components;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Nez;
 using Nez.Sprites;

@@ -2,6 +2,7 @@
 
 using ColorSwitch.Windows.GameCore.Entities;
 using ColorSwitch.Windows.GameCore.Entities.Enemies;
+using ColorSwitch.Windows.GameCore.Entities.Special;
 
 namespace ColorSwitch.Windows.GameCore.Scenes {
 	public class GameScene : Scene {

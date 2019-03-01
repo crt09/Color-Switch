@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Nez;
 using Nez.Sprites;
 
-namespace ColorSwitch.Windows.GameCore.Entities.Enemies {
+namespace ColorSwitch.Windows.GameCore.Components {
 	public class ColorCirclePhysics : Component {
 
 		public struct ColorInfo {
