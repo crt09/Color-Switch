@@ -24,9 +24,9 @@ namespace ColorSwitch.Windows.GameCore.Entities {
 
 		public override void SendState(Entity sender) {
 			if (sender is Player player) {
-				var switcherCollider = getComponent<Collider>();
+				var starCollider = getComponent<Collider>();
 				var playerCollider = player.getComponent<Collider>();
-				if (switcherCollider.collidesWith(playerCollider, out CollisionResult result)) {
+				if (starCollider.collidesWith(playerCollider, out CollisionResult result)) {
 					// TODO: score logic
 					destroy();
 				}

@@ -1,6 +1,7 @@
 ﻿using Nez;
 
 using ColorSwitch.Windows.GameCore.Entities;
+using ColorSwitch.Windows.GameCore.Entities.Enemies;
 
 namespace ColorSwitch.Windows.GameCore.Scenes {
 	public class GameScene : Scene {
@@ -10,12 +11,15 @@ namespace ColorSwitch.Windows.GameCore.Scenes {
 			var player = new Player();
 			var colorSwitcher = new ColorSwitcher();
 			var star = new Star();
+			var circle = new ColorCircle();
 			player.touchableEntities.Add(colorSwitcher);
 			player.touchableEntities.Add(star);
+			player.touchableEntities.Add(circle);
 
 			addEntity(player);
 			addEntity(colorSwitcher);
 			addEntity(star);
+			addEntity(circle);
 		}
 	}
 }

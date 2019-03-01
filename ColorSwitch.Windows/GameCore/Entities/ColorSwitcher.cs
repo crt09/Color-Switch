@@ -28,7 +28,7 @@ namespace ColorSwitch.Windows.GameCore.Entities {
 				var playerCollider = player.getComponent<Collider>();
 				if (switcherCollider.collidesWith(playerCollider, out CollisionResult result)) {
 					// TODO: switching logic
-					player.color = Color.Red;
+					player.color = GameColor.Yellow;
 					destroy();
 				}
 			}

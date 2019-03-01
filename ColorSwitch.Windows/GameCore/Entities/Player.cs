@@ -35,7 +35,8 @@ namespace ColorSwitch.Windows.GameCore.Entities {
 			var collider = new CircleCollider(playerTexture.Height / 2);
 			addComponent(collider);
 
-			transform.position = new Vector2(scene.sceneRenderTargetSize.X / 2, scene.sceneRenderTargetSize.Y / 2);
+			transform.position = new Vector2(scene.sceneRenderTargetSize.X / 2, 600);
+			color = GameColor.Red;
 		}
 
 		public override void update() {
@@ -47,7 +48,7 @@ namespace ColorSwitch.Windows.GameCore.Entities {
 				physics.Update();
 			physics.HandleTouchableEntities(touchableEntities);
 
-			if (Input.isKeyPressed(Keys.Up) || Input.leftMouseButtonPressed) {
+			if (Input.isKeyPressed(Keys.Up) ) {
 				gameStarted = true;
 				physics.ApplyImpulse();
 			}			

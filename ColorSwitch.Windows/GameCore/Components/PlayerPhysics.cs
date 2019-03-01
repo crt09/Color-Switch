@@ -13,34 +13,37 @@ namespace ColorSwitch.Windows.GameCore.Components {
 		public PlayerPhysics() : base() { }
 
 		public void ApplyImpulse() {
+			if (!enabled) return;
 			impulseAccelerator = 0;
 			impulseHandling = true;
 		}  
 	 
 		public void Update() {
+			if (!enabled) return;
 			if (impulseHandling) {
 				if (impulseAccelerator < 10f) {
-					entity.transform.position -= new Vector2(0, ImpulseSpeed - impulseAccelerator);
+					entity.transform.position -= new Vector2(0, ImpulseSpeed - impulseAccelerator) * Time.deltaTime * 50;
 					impulseAccelerator += 1.0f;
 				} else {
 					impulseHandling = false;
 				}
 			} else {
-				entity.transform.position += new Vector2(0, ImpulseSpeed - impulseAccelerator);
+				entity.transform.position += new Vector2(0, ImpulseSpeed - impulseAccelerator) * Time.deltaTime * 50;
 				if (impulseAccelerator > 0)
 					impulseAccelerator -= 0.5f;
 			}			
 		}
 
-		public void HandleTouchableEntities(List<TouchableEntity> colorEntities) {
-			for (int i = 0; i < colorEntities.Count; i++) {
-				if (colorEntities[i].isDestroyed) {
-					colorEntities.RemoveAt(i); 
+		public void HandleTouchableEntities(List<TouchableEntity> touchableEntities) {
+			if (!enabled) return;
+			for (int i = 0; i < touchableEntities.Count; i++) {
+				if (touchableEntities[i].isDestroyed) {
+					touchableEntities.RemoveAt(i); 
 					i--;
 				}
 			}
-			foreach (var colorEntity in colorEntities) {
-				colorEntity.SendState(entity);
+			foreach (var touchableEntity in touchableEntities) {
+				touchableEntity.SendState(entity);
 			}
 		}
 	}

@@ -44,10 +44,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="GameCore\Components\PlayerPhysics.cs" />
+    <Compile Include="GameCore\Entities\Enemies\ColorCircle.cs" />
+    <Compile Include="GameCore\Entities\Enemies\ColorCirclePhysics.cs" />
     <Compile Include="GameCore\Entities\Star.cs" />
     <Compile Include="GameCore\Entities\TouchableEntity.cs" />
     <Compile Include="GameCore\Entities\ColorSwitcher.cs" />
     <Compile Include="GameCore\Entities\Player.cs" />
+    <Compile Include="GameCore\GameColor.cs" />
     <Compile Include="GameCore\Scenes\GameScene.cs" />
     <Compile Include="MainGame.cs" />
     <Compile Include="Program.cs" />

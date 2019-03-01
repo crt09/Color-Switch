@@ -14,7 +14,7 @@ namespace ColorSwitch.Windows {
 
 			defaultSamplerState = SamplerState.PointClamp;
 #pragma warning disable 0618 // disable obsolete warning
-			scene = Scene.createWithDefaultRenderer<GameScene>(Color.Black);
+			scene = Scene.createWithDefaultRenderer<GameScene>(new Color(42, 40, 43));
 #pragma warning restore 0618
 			Core.debugRenderEnabled = true;
 		}
