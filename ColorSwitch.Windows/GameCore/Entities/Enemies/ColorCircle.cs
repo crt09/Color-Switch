@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Nez;
 using Nez.Sprites;
@@ -36,11 +35,9 @@ namespace ColorSwitch.Windows.GameCore.Entities.Enemies {
 					if (playerCollider.collidesWith(info.collider, out CollisionResult result)
 					    && player.color != info.color) {
 						// TODO: destroy player
-						player.color = GameColor.Violet;
 					}
 				}				
 			}
-		}	
-		
+		}		
 	}
 }

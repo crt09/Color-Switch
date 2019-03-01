@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Nez;
+using Nez.Sprites;
 
 namespace ColorSwitch.Windows.GameCore.Entities.Enemies {
 	public class ColorCirclePhysics : Component {
@@ -19,6 +20,33 @@ namespace ColorSwitch.Windows.GameCore.Entities.Enemies {
 
 		public override void initialize() {
 			colorInfo = new List<ColorInfo>();
+
+			var storage = XmlHelper.FromXml<PolygonStorage>(Properties.Resources.PolygonStorage);
+
+			var sectorPoints = storage.SectorStorage;
+			for (int i = 0; i < sectorPoints.Count; i++) {
+				var spriteSize = entity.getComponent<Sprite>().bounds;
+				applyOffset(
+					new Vector2(entity.transform.position.X - spriteSize.width / 2,
+						entity.transform.position.Y - spriteSize.height / 2), sectorPoints[i]);
+
+				var collider = new PolygonCollider(sectorPoints[i].ToArray());
+				entity.addComponent(collider);
+				Color color = Color.Black;
+				switch (i) {
+					case 0: color = GameColor.Violet; break;
+					case 1: color = GameColor.Red; break;
+					case 2: color = GameColor.Blue; break;
+					case 3: color = GameColor.Yellow; break;
+				}
+				colorInfo.Add(new ColorInfo(color, collider));
+			}
+		}
+
+		private void applyOffset(Vector2 offset, List<Vector2> array) {
+			for (int i = 0; i < array.Count; i++) {
+				array[i] += offset;
+			}
 		}
 	}
 }
