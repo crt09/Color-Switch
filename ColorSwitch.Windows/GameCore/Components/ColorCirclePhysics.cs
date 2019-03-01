@@ -26,9 +26,7 @@ namespace ColorSwitch.Windows.GameCore.Components {
 			var sectorPoints = storage.SectorStorage;
 			for (int i = 0; i < sectorPoints.Count; i++) {
 				var spriteSize = entity.getComponent<Sprite>().bounds;
-				applyOffset(
-					new Vector2(entity.transform.position.X - spriteSize.width / 2,
-						entity.transform.position.Y - spriteSize.height / 2), sectorPoints[i]);
+				applyOffset(new Vector2(-spriteSize.width / 2, -spriteSize.height / 2), sectorPoints[i]);
 
 				var collider = new PolygonCollider(sectorPoints[i].ToArray());
 				entity.addComponent(collider);

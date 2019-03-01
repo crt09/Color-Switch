@@ -19,13 +19,11 @@ namespace ColorSwitch.Windows.GameCore.Entities.Enemies {
 
 			var physics = new ColorCirclePhysics();
 			addComponent(physics);
-
-			transform.position = new Vector2(400, 300);
 		}
 
 		public override void update() {
 			base.update();			
-			transform.rotation += 0.8f * Time.deltaTime;
+			transform.rotation += 1.2f * Time.deltaTime;
 		}
 
 		public override void SendState(Entity sender) {

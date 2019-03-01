@@ -9,7 +9,7 @@ namespace ColorSwitch.Windows.GameCore.Entities {
 
 		public override void update() {
 			base.update();
-			if (!scene.camera.bounds.intersects(getComponent<Sprite>().bounds)) {
+			if (transform.position.Y - (getComponent<Sprite>().height * 0.5f) > scene.camera.bounds.height) {
 				destroy();
 			}
 		}

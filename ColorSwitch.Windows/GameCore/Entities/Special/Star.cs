@@ -18,8 +18,6 @@ namespace ColorSwitch.Windows.GameCore.Entities.Special {
 
 			var collider = new CircleCollider(starTexture.Height / 2);
 			addComponent(collider);
-
-			transform.position = new Vector2(400, 300);
 		}
 
 		public override void SendState(Entity sender) {
