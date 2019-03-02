@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using ColorSwitch.Windows.GameCore.Helpers;
+using ColorSwitch.Windows.GameCore.Serialization;
 using Microsoft.Xna.Framework;
 using Nez;
 using Nez.Sprites;

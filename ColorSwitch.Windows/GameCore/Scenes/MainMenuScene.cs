@@ -1,7 +1,8 @@
-﻿using ColorSwitch.Windows.GameCore.UiLib.Entities;
+﻿using ColorSwitch.Windows.GameCore.Helpers;
+using ColorSwitch.Windows.GameCore.Serialization;
+using ColorSwitch.Windows.GameCore.UiLib.Entities;
 using Microsoft.Xna.Framework;
 using Nez;
-using Nez.Tweens;
 
 namespace ColorSwitch.Windows.GameCore.Scenes {
 	public class MainMenuScene : Scene {
@@ -25,14 +26,7 @@ namespace ColorSwitch.Windows.GameCore.Scenes {
 		}
 
 		private void PlayButtonOnClick() {
-#pragma warning disable 0618
-			var transition = new FadeTransition(() => createWithDefaultRenderer<GameScene>(clearColor)) {
-				delayBeforeFadeInDuration = 0,
-				fadeOutDuration = 0.3f,
-				fadeInDuration = 0.3f
-			};
-			Core.startSceneTransition(transition);
-#pragma warning restore 0618
+			TransitionManager.StartDefault<GameScene>(clearColor);
 		}
 	}
 }

@@ -2,7 +2,7 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace ColorSwitch.Windows.GameCore {
+namespace ColorSwitch.Windows.GameCore.Serialization {
 
 	[Serializable]
 	public class GameDataStorage {

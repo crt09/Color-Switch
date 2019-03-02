@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-namespace ColorSwitch.Windows.GameCore {
+namespace ColorSwitch.Windows.GameCore.Helpers {
 	public static class GameColor {
 		public static Color Violet => new Color(142, 17, 254);
 		public static Color Red => new Color(255, 0, 131);

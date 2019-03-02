@@ -5,6 +5,9 @@ using Nez;
 using Nez.Sprites;
 using ColorSwitch.Windows.GameCore.Components;
 using ColorSwitch.Windows.GameCore.UiLib.Entities;
+using ColorSwitch.Windows.GameCore.Serialization;
+using ColorSwitch.Windows.GameCore.Helpers;
+using ColorSwitch.Windows.GameCore.Scenes;
 
 namespace ColorSwitch.Windows.GameCore.Entities {
 	public class Player : Entity {
@@ -13,15 +16,15 @@ namespace ColorSwitch.Windows.GameCore.Entities {
 			get => playerSprite.color;
 			set => playerSprite.color = value;
 		}
-		private uint _score = 0;
-		public uint score {
+		private static uint _score = 0;
+		public static uint score {
 			get => _score;
 			set {
 				scoreText?.setText(value.ToString());
 				_score = value;
 			}
 		}
-		private GameText scoreText;
+		private static GameText scoreText;
 
 		public List<TouchableEntity> touchableEntities;
 
@@ -33,8 +36,8 @@ namespace ColorSwitch.Windows.GameCore.Entities {
 			touchableEntities = new List<TouchableEntity>();
 		}
 
-		public Player AddScoreText(GameText scoreText) {
-			this.scoreText = scoreText;
+		public Player AddScoreText(GameText text) {
+			scoreText = text;
 			return this;
 		}
 
@@ -93,6 +96,7 @@ namespace ColorSwitch.Windows.GameCore.Entities {
 				storage.Save();
 			}
 			destroy();
+			TransitionManager.StartDefault<DeathScene>(scene.clearColor);
 		}
 	}
 }
