@@ -10,7 +10,8 @@ namespace ColorSwitch.Windows {
 
 		protected override void Initialize() {
 			base.Initialize();
-			Window.AllowUserResizing = true;						
+			Window.AllowUserResizing = true;
+			exitOnEscapeKeypress = false;
 
 			defaultSamplerState = SamplerState.PointClamp;
 #pragma warning disable 0618 // disable obsolete warning

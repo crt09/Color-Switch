@@ -2,6 +2,7 @@
 using ColorSwitch.Windows.GameCore.Entities;
 using ColorSwitch.Windows.GameCore.UiLib.Entities;
 using Microsoft.Xna.Framework;
+using ColorSwitch.Windows.GameCore.Helpers;
 
 namespace ColorSwitch.Windows.GameCore.Scenes {
 	public class GameScene : Scene {
@@ -23,11 +24,6 @@ namespace ColorSwitch.Windows.GameCore.Scenes {
 		}
 
 		private void initializeUi() {
-			var pauseButton = new Button("UI/pause_button_normal", "UI/pause_button_hover");
-			pauseButton.position = new Vector2(camera.bounds.width - 32, 32);
-			pauseButton.Click += () => Core.exit();
-			addEntity(pauseButton);
-
 			var scoreText = new GameText("0");
 			scoreText.position = new Vector2(16, 16);
 			player.AddScoreText(scoreText);

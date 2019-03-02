@@ -16,6 +16,7 @@ namespace ColorSwitch.Windows.GameCore.Scenes {
 			var halfScreen = camera.bounds.size * 0.5f;
 			playButton.position = new Vector2(halfScreen.X, halfScreen.Y);
 			playButton.Click += PlayButtonOnClick;
+			playButton.setActivationDelay(TransitionManager.delay);
 			addEntity(playButton);
 
 			var storage = GameDataStorage.getInstance();

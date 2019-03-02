@@ -17,6 +17,7 @@ namespace ColorSwitch.Windows.GameCore.Scenes {
 			var restartButton = new Button("UI/restart_button_normal", "UI/restart_button_hover");
 			restartButton.position = new Vector2(halfScreen.X, halfScreen.Y);
 			restartButton.Click += RestartButtonOnClick;
+			restartButton.setActivationDelay(TransitionManager.delay);
 			addEntity(restartButton);
 
 			var scoreText = new GameText($"Score: {Player.score}");
@@ -32,6 +33,7 @@ namespace ColorSwitch.Windows.GameCore.Scenes {
 			var mainMenuButton = new Button("UI/menu_button_normal", "UI/menu_button_hover");
 			mainMenuButton.position = new Vector2(32, 32);
 			mainMenuButton.Click += MainMenuButtonOnClick;
+			mainMenuButton.setActivationDelay(TransitionManager.delay);
 			addEntity(mainMenuButton);
 		}
 
