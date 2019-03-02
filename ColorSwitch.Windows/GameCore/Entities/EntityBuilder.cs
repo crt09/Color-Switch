@@ -15,7 +15,9 @@ namespace ColorSwitch.Windows.GameCore.Entities {
 			this.touchableEntities = touchableEntities;
 		}
 
-		public override void update() {		
+		public override void update() {
+			if (touchableEntities == null) return;
+
 			var halfScreen = scene.camera.bounds.size * 0.5f;
 
 			if (touchableEntities.Count == 0) {

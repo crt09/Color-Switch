@@ -28,6 +28,9 @@ namespace ColorSwitch.Windows.GameCore {
 		}
 
 		public void Load() {
+			if (!File.Exists(path))
+				Save();
+
 			formatter = formatter ?? new BinaryFormatter();
 			using (var stream = new FileStream(path, FileMode.OpenOrCreate)) {
 				var obj = (GameDataStorage)formatter.Deserialize(stream);

@@ -55,6 +55,8 @@
     <Compile Include="GameCore\GameColor.cs" />
     <Compile Include="GameCore\PolygonStorage.cs" />
     <Compile Include="GameCore\Scenes\GameScene.cs" />
+    <Compile Include="GameCore\UiLib\Entities\Button.cs" />
+    <Compile Include="GameCore\UiLib\Entities\GameText.cs" />
     <Compile Include="GameCore\XmlHelper.cs" />
     <Compile Include="MainGame.cs" />
     <Compile Include="Program.cs" />

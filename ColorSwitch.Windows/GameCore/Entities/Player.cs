@@ -4,14 +4,24 @@ using Microsoft.Xna.Framework.Graphics;
 using Nez;
 using Nez.Sprites;
 using ColorSwitch.Windows.GameCore.Components;
+using ColorSwitch.Windows.GameCore.UiLib.Entities;
 
 namespace ColorSwitch.Windows.GameCore.Entities {
 	public class Player : Entity {
+
 		public Color color {
 			get => playerSprite.color;
 			set => playerSprite.color = value;
 		}
-		public uint score = 0;
+		private uint _score = 0;
+		public uint score {
+			get => _score;
+			set {
+				scoreText?.setText(value.ToString());
+				_score = value;
+			}
+		}
+		private GameText scoreText;
 
 		public List<TouchableEntity> touchableEntities;
 
@@ -21,6 +31,11 @@ namespace ColorSwitch.Windows.GameCore.Entities {
 
 		public Player() : base("player") {
 			touchableEntities = new List<TouchableEntity>();
+		}
+
+		public Player AddScoreText(GameText scoreText) {
+			this.scoreText = scoreText;
+			return this;
 		}
 
 		public override void onAddedToScene() {		
