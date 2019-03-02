@@ -11,6 +11,7 @@ namespace ColorSwitch.Windows.GameCore.Entities {
 			get => playerSprite.color;
 			set => playerSprite.color = value;
 		}
+		public uint score = 0;
 
 		public List<TouchableEntity> touchableEntities;
 
@@ -48,8 +49,7 @@ namespace ColorSwitch.Windows.GameCore.Entities {
 
 			if (Input.leftMouseButtonPressed) {
 				gameStarted = true;
-				physics.ApplyImpulse();
-				
+				physics.ApplyImpulse();				
 			}
 
 			var halfScreen = scene.camera.bounds.size * 0.5f;
@@ -71,6 +71,12 @@ namespace ColorSwitch.Windows.GameCore.Entities {
 		}
 
 		public void kill() {
+			var storage = GameDataStorage.getInstance();
+			storage.Load();
+			if (score > storage.BestScore) {
+				storage.BestScore = score;
+				storage.Save();
+			}
 			destroy();
 		}
 	}

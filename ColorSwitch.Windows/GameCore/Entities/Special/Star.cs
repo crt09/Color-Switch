@@ -26,8 +26,8 @@ namespace ColorSwitch.Windows.GameCore.Entities.Special {
 			if (sender is Player player) {
 				var starCollider = getComponent<Collider>();
 				var playerCollider = player.getComponent<Collider>();
-				if (starCollider.collidesWith(playerCollider, out CollisionResult result)) {
-					// TODO: score logic
+				if (starCollider.collidesWith(playerCollider, out CollisionResult result)) {					
+					player.score++;
 					destroy();
 				}
 			}

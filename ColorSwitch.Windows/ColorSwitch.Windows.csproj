@@ -47,6 +47,7 @@
     <Compile Include="GameCore\Entities\Enemies\ColorCircle.cs" />
     <Compile Include="GameCore\Components\ColorCirclePhysics.cs" />
     <Compile Include="GameCore\Entities\EntityBuilder.cs" />
+    <Compile Include="GameCore\GameDataStorage.cs" />
     <Compile Include="GameCore\Entities\Special\Star.cs" />
     <Compile Include="GameCore\Entities\TouchableEntity.cs" />
     <Compile Include="GameCore\Entities\Special\ColorSwitcher.cs" />
