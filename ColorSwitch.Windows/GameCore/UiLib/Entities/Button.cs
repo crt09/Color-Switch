@@ -7,7 +7,7 @@ using Nez.Textures;
 namespace ColorSwitch.Windows.GameCore.UiLib.Entities {
 	public class Button : Entity {
 
-		public event Action OnClick;
+		public event Action Click;
 
 		private Subtexture normalButtonSubtexture;
 		private Subtexture hoverButtonSubtexture;
@@ -32,7 +32,7 @@ namespace ColorSwitch.Windows.GameCore.UiLib.Entities {
 			base.update();
 			buttonSprite.subtexture = isHovering() ? hoverButtonSubtexture : normalButtonSubtexture;
 			if (Input.leftMouseButtonReleased && isHovering()) {
-				OnClick?.Invoke();
+				Click?.Invoke();
 			}
 		}
 

@@ -49,7 +49,7 @@ namespace ColorSwitch.Windows.GameCore.Entities {
 			var collider = new CircleCollider(playerTexture.Height / 2);
 			addComponent(collider);
 
-			transform.position = new Vector2(scene.camera.bounds.size.X * 0.5f, 600);
+			transform.position = new Vector2(scene.camera.bounds.size.X * 0.5f, 590);
 			color = GameColor.GetColorById((uint)Random.nextInt(4));
 		}
 

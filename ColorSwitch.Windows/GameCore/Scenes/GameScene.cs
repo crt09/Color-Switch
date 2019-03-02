@@ -8,9 +8,11 @@ namespace ColorSwitch.Windows.GameCore.Scenes {
 
 		private Player player;
 
-		public GameScene() : base() { }
+		public GameScene() : base() {
+			setDesignResolution(400, 700, SceneResolutionPolicy.BestFit);
+		}
 
-		public override void initialize() {			
+		public override void initialize() {		
 			player = new Player();
 			addEntity(player);
 
@@ -23,7 +25,7 @@ namespace ColorSwitch.Windows.GameCore.Scenes {
 		private void initializeUi() {
 			var pauseButton = new Button("UI/pause_button_normal", "UI/pause_button_hover");
 			pauseButton.position = new Vector2(camera.bounds.width - 32, 32);
-			pauseButton.OnClick += () => Core.exit();
+			pauseButton.Click += () => Core.exit();
 			addEntity(pauseButton);
 
 			var scoreText = new GameText("0");
