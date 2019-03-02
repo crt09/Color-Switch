@@ -1,8 +1,12 @@
-﻿using Nez;
+﻿using Microsoft.Xna.Framework;
+using Nez;
 using Nez.Sprites;
 
 namespace ColorSwitch.Windows.GameCore.Entities {
 	public abstract class TouchableEntity : Entity {
+
+		public abstract Vector2 realSize { get; }
+
 		public TouchableEntity(string name) : base(name) { }
 
 		public abstract void SendState(Entity sender);

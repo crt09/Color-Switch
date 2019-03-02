@@ -9,6 +9,8 @@ namespace ColorSwitch.Windows.GameCore.Entities.Special {
 		private Texture2D starTexture;
 		private Sprite starSprite;
 
+		public override Vector2 realSize => starTexture.Bounds.Size.ToVector2();
+
 		public Star() : base("star") { }
 
 		public override void onAddedToScene() {

@@ -10,6 +10,8 @@ namespace ColorSwitch.Windows.GameCore.Entities.Enemies {
 		private Texture2D circleTexture;
 		private Sprite circleSprite;
 
+		public override Vector2 realSize => circleTexture.Bounds.Size.ToVector2();
+
 		public ColorCircle() : base("color-circle") { }
 
 		public override void onAddedToScene() {

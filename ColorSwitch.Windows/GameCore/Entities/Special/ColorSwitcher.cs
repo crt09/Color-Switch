@@ -9,6 +9,8 @@ namespace ColorSwitch.Windows.GameCore.Entities.Special {
 		private Texture2D switcherTexture;
 		private Sprite switcherSprite;
 
+		public override Vector2 realSize => switcherTexture.Bounds.Size.ToVector2();
+
 		public ColorSwitcher() : base("color-switcher") { }
 
 		public override void onAddedToScene() {

@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
 using ColorSwitch.Windows.GameCore.Entities.Enemies;
 using ColorSwitch.Windows.GameCore.Entities.Special;
 using Microsoft.Xna.Framework;
 using Nez;
-using Nez.Sprites;
 
 namespace ColorSwitch.Windows.GameCore.Entities {
 	public class EntityBuilder : Entity {
@@ -26,10 +24,9 @@ namespace ColorSwitch.Windows.GameCore.Entities {
 				spawnEntity<Star>(entityPosition);
 				spawnEntity<ColorCircle>(entityPosition);
 
-			} else if (touchableEntities.Last().position.Y - touchableEntities.Last().getComponent<Sprite>().height * 0.5f >= ENTITY_INDENT) {
+			} else if (touchableEntities.Last().position.Y - touchableEntities.Last().realSize.Y * 0.5f >= ENTITY_INDENT) {
 
 				var entityPosition = new Vector2(halfScreen.X, touchableEntities.Last().position.Y - 152 /** magic number **/ - ENTITY_INDENT);
-				var a = touchableEntities.Last().position.Y;
 				if (touchableEntities.Last() is ColorSwitcher) {
 					spawnEntity<Star>(entityPosition);
 					spawnEntity<ColorCircle>(entityPosition);
