@@ -27,13 +27,17 @@ namespace ColorSwitch.Windows.GameCore.Entities.Special {
 				var switcherCollider = getComponent<Collider>();
 				var playerCollider = player.getComponent<Collider>();
 				if (switcherCollider.collidesWith(playerCollider, out CollisionResult result)) {
-					player.color = randomColor;
+					Color newColor;
+					do {
+						newColor = getRandomColor;
+					} while (newColor == player.color);
+					player.color = newColor;
 					destroy();
 				}
 			}
 		}
 
-		private Color randomColor => 
+		private Color getRandomColor => 
 			GameColor.GetColorById((uint)Random.nextInt(4));
 	}
 }
