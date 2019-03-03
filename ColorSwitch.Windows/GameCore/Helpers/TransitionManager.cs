@@ -4,13 +4,27 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using Nez;
 
-namespace ColorSwitch.Windows.GameCore.Helpers {
-	public static class TransitionManager {
 #pragma warning disable 0618
-		public const float DURATION = 0.3f;
 
-		private static bool handlerIsBusy;
-		private static Queue transitions = new Queue();
+namespace ColorSwitch.Windows.GameCore.Helpers {
+	public class TransitionManager {
+
+		public static float duration = 0.3f;
+
+		private static TransitionManager _instance;
+		private static TransitionManager instance => 
+			_instance ?? (_instance = new TransitionManager());
+
+		public static void StartDefault<TScene>(Color clearColor) where TScene : Scene, new() {
+			TransitionManager.instance.start<TScene>(clearColor);
+		}
+
+		private bool handlerIsBusy;
+		private Queue transitions;
+
+		private TransitionManager() {
+			transitions = new Queue();
+		}
 
 		private class TransitionInfo {
 			public SceneTransition transition;
@@ -21,39 +35,39 @@ namespace ColorSwitch.Windows.GameCore.Helpers {
 			}
 		}
 
-		public static void StartDefault<TScene>(Color clearColor) where TScene : Scene, new() {
+		private void start<TScene>(Color clearColor) where TScene : Scene, new() {
 			var transition = new FadeTransition(() => Scene.createWithDefaultRenderer<TScene>(clearColor)) {
-				delayBeforeFadeInDuration = 0, fadeOutDuration = DURATION,
-				fadeInDuration = DURATION, fadeToColor = clearColor
+				delayBeforeFadeInDuration = 0, fadeOutDuration = duration,
+				fadeInDuration = duration, fadeToColor = clearColor
 			};
 			var next = new TransitionInfo(transition, typeof(TScene));
-			TransitionManager.enqueue(next);
+			this.enqueue(next);
 		}
 
-		private static void enqueue(TransitionInfo transition) {
-			if (transitions.Count == 0 
-				|| transition.sceneType != (transitions.ToArray().Last() as TransitionInfo).sceneType) {
+		private void enqueue(TransitionInfo transition) {
+			var lastSceneType = (transitions.Count > 0) ? (transitions.ToArray().Last() as TransitionInfo).sceneType : null;
+			if (transition.sceneType != lastSceneType) {
 				transitions.Enqueue(transition);
 			}
 
 			if (handlerIsBusy) return;
 			handlerIsBusy = true;
-			TransitionManager.peekAndStart();			
+			this.peekAndStart();			
 		}
 
-		private static void peekAndStart() {
-			var currentTransition = (transitions.Peek() as TransitionInfo).transition;
-			currentTransition.onTransitionCompleted += onTransitionCompleted;
-			Core.startSceneTransition(currentTransition);
+		private void peekAndStart() {
+			var transition = (transitions.Peek() as TransitionInfo).transition;
+			transition.onTransitionCompleted += onTransitionCompleted;
+			Core.startSceneTransition(transition);
 		}
 
-		private static void onTransitionCompleted() {
+		private void onTransitionCompleted() {
 			handlerIsBusy = false;
 			transitions.Dequeue();
 			if (transitions.Count > 0) {
-				TransitionManager.enqueue(transitions.Peek() as TransitionInfo);
+				this.enqueue(transitions.Peek() as TransitionInfo);
 			}
 		}
-#pragma warning restore 0618
 	}
 }
+#pragma warning restore 0618
