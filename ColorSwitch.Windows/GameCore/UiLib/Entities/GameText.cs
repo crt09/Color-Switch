@@ -1,13 +1,24 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Nez;
+using Nez.Tweens;
 
 namespace ColorSwitch.Windows.GameCore.UiLib.Entities {
-	public class GameText : Entity {
+	public class GameText : Entity, ITweenTarget<float> {
 
-		private string defaultText;
 		private Text gameText;
+		private string defaultText;
 		private HorizontalAlign horizontalAlign;
+
+		private float _opacity = 1.0f;
+		private float opacity {
+			get => _opacity;
+			set {
+				if(gameText != null)
+					gameText.color = Color.White * value;
+				_opacity = value;
+			}
+		}
 
 		public GameText(string defaultText = "", HorizontalAlign horizontalAlign = HorizontalAlign.Center) : base("text") {
 			this.defaultText = defaultText;
@@ -23,7 +34,19 @@ namespace ColorSwitch.Windows.GameCore.UiLib.Entities {
 		}
 
 		public void setText(string newText) {
-			if(gameText != null) this.gameText.text = newText;
+			if (gameText != null) this.gameText.text = newText;
+		}
+
+		public object getTargetObject() {
+			return this;
+		}
+
+		public float getTweenedValue() {
+			return opacity;
+		}
+
+		public void setTweenedValue(float value) {
+			opacity = value;
 		}
 	}
 }
