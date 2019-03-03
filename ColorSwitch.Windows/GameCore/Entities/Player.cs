@@ -26,7 +26,7 @@ namespace ColorSwitch.Windows.GameCore.Entities {
 		}
 		private static GameText scoreText;
 
-		public List<TouchableEntity> touchableEntities;
+		public static List<TouchableEntity> touchableEntities;
 
 		private bool gameStarted = false;
 		private Texture2D playerTexture;

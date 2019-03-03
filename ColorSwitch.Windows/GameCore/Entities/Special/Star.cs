@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Nez;
+using Nez.Particles;
 using Nez.Sprites;
 using Nez.Tweens;
 
@@ -10,6 +11,8 @@ namespace ColorSwitch.Windows.GameCore.Entities.Special {
 		
 		private Texture2D starTexture;
 		private Sprite starSprite;
+		private ParticleEmitterConfig particleConfig;
+		private float deathDuration = 0.7f;
 
 		public override Vector2 realSize => starTexture.Bounds.Size.ToVector2();
 
@@ -21,7 +24,10 @@ namespace ColorSwitch.Windows.GameCore.Entities.Special {
 			addComponent(starSprite);
 
 			var collider = new CircleCollider(starTexture.Height / 2);
-			addComponent(collider);			
+			addComponent(collider);
+
+			particleConfig = scene.content.Load<ParticleEmitterConfig>("Particles/star_death");
+			particleConfig.duration = deathDuration;
 		}
 
 		public override void SendState(Entity sender) {
@@ -35,26 +41,38 @@ namespace ColorSwitch.Windows.GameCore.Entities.Special {
 			}
 		}
 
-		private new void destroy() {			
-			float duration = 0.7f;
+		private new void destroy() {				
+			showScore();
+			spawnParticles();			
+			base.destroy();		
+		}
 
+		private void showScore() {
 			var scoreText = new GameText("+1");
 			scoreText.position = position;
 			scene.addEntity(scoreText);
 
-			var moveTween = scoreText.tweenPositionTo(position + new Vector2(0, -40), duration);
+			var moveTween = scoreText.tweenPositionTo(position + new Vector2(0, -40), deathDuration);
 			moveTween.setEaseType(EaseType.QuadOut);
 			moveTween.start();
 
-			var opacityTween = new FloatTween(scoreText, 0f, duration - 0.3f);
+			var opacityTween = new FloatTween(scoreText, 0f, deathDuration - 0.3f);
 			opacityTween.setEaseType(EaseType.QuadOut);
 			opacityTween.setDelay(0.3f);
-			opacityTween.start();	
-		
-			Core.schedule(duration, t => {
+			opacityTween.start();
+
+			Core.schedule(deathDuration, t => {
 				if (scene != null) scoreText?.destroy();
 			});
-			base.destroy();		
+		}
+
+		private void spawnParticles() {
+			var index = Player.touchableEntities.IndexOf(this) + 1;
+			var particles = Player.touchableEntities[index];
+
+			particleConfig.sourcePosition = position;
+			var particleEmitter = particles.addComponent(new ParticleEmitter(particleConfig));
+			particleEmitter.play();
 		}
 	}
 }

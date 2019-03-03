@@ -2,7 +2,6 @@
 using ColorSwitch.Windows.GameCore.Entities;
 using ColorSwitch.Windows.GameCore.UiLib.Entities;
 using Microsoft.Xna.Framework;
-using ColorSwitch.Windows.GameCore.Helpers;
 
 namespace ColorSwitch.Windows.GameCore.Scenes {
 	public class GameScene : Scene {
@@ -17,7 +16,7 @@ namespace ColorSwitch.Windows.GameCore.Scenes {
 			player = new Player();
 			addEntity(player);
 
-			var entityBuilder = new EntityBuilder(player.touchableEntities);			
+			var entityBuilder = new EntityBuilder(Player.touchableEntities);			
 			addEntity(entityBuilder);
 
 			Player.score = 0;

@@ -60,6 +60,11 @@
 /processorParam:TextureFormat=Compressed
 /build:font.spritefont
 
+#begin Particles/star_death.pex
+/importer:ParticleDesignerImporter
+/processor:ParticleDesignerProcessor
+/build:Particles/star_death.pex
+
 #begin Player/player_circle.png
 /importer:TextureImporter
 /processor:TextureProcessor

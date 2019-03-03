@@ -47,7 +47,8 @@ namespace ColorSwitch.Windows.GameCore.Components {
 				}
 			}
 			foreach (var touchableEntity in touchableEntities) {
-				touchableEntity.SendState(entity);
+				if(touchableEntity.getComponent<Collider>() != null)
+					touchableEntity.SendState(entity);
 			}
 		}
 	}
