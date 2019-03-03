@@ -7,15 +7,18 @@ namespace ColorSwitch.Windows.GameCore.UiLib.Entities {
 
 		private string defaultText;
 		private Text gameText;
+		private HorizontalAlign horizontalAlign;
 
-		public GameText(string defaultText = "") : base("text") {
+		public GameText(string defaultText = "", HorizontalAlign horizontalAlign = HorizontalAlign.Center) : base("text") {
 			this.defaultText = defaultText;
+			this.horizontalAlign = horizontalAlign;
 		}
 
 		public override void onAddedToScene() {
 			var spriteFont = scene.content.Load<SpriteFont>("font");
 			var nezFont = new NezSpriteFont(spriteFont);
 			gameText = new Text(nezFont, defaultText, Vector2.Zero, Color.White);
+			gameText.setHorizontalAlign(horizontalAlign);
 			addComponent(gameText);
 		}
 

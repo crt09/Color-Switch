@@ -10,7 +10,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ColorSwitch.Windows</RootNamespace>
-    <AssemblyName>ColorSwitch.Windows</AssemblyName>
+    <AssemblyName>ColorSwitch</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MonoGamePlatform>DesktopGL</MonoGamePlatform>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
@@ -44,6 +44,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="GameCore\Components\PlayerPhysics.cs" />
+    <Compile Include="GameCore\UiLib\Entities\Background.cs" />
     <Compile Include="GameCore\Entities\Enemies\ColorCircle.cs" />
     <Compile Include="GameCore\Components\ColorCirclePhysics.cs" />
     <Compile Include="GameCore\Entities\EntityBuilder.cs" />

@@ -14,26 +14,27 @@ namespace ColorSwitch.Windows.GameCore.Scenes {
 		public override void initialize() {
 			var halfScreen = camera.bounds.size * 0.5f;
 
+			var background = Background.Create("UI/deathscreen_background");
+			addEntity(background);
+
 			var restartButton = new Button("UI/restart_button_normal", "UI/restart_button_hover");
-			restartButton.position = new Vector2(halfScreen.X, halfScreen.Y);
+			restartButton.position = new Vector2(halfScreen.X, 580);
 			restartButton.Click += RestartButtonOnClick;
-			restartButton.setActivationDelay(TransitionManager.delay);
 			addEntity(restartButton);
 
-			var scoreText = new GameText($"Score: {Player.score}");
-			scoreText.position = new Vector2(200, 50);
+			var scoreText = new GameText($"{Player.score}");
+			scoreText.position = new Vector2(halfScreen.X, 335);
 			addEntity(scoreText);
 
 			var storage = GameDataStorage.getInstance();
 			storage.Load();
-			var bestScoreText = new GameText($"Best score: {storage.BestScore}");
-			bestScoreText.position = new Vector2(200, 100);
+			var bestScoreText = new GameText($"{storage.BestScore}");
+			bestScoreText.position = new Vector2(halfScreen.X, 435);
 			addEntity(bestScoreText);
 
 			var mainMenuButton = new Button("UI/menu_button_normal", "UI/menu_button_hover");
 			mainMenuButton.position = new Vector2(32, 32);
 			mainMenuButton.Click += MainMenuButtonOnClick;
-			mainMenuButton.setActivationDelay(TransitionManager.delay);
 			addEntity(mainMenuButton);
 		}
 

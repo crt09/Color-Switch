@@ -10,14 +10,12 @@ namespace ColorSwitch.Windows {
 
 		protected override void Initialize() {
 			base.Initialize();
-			Window.AllowUserResizing = true;
 			exitOnEscapeKeypress = false;
+			defaultSamplerState = SamplerState.LinearClamp;
 
-			defaultSamplerState = SamplerState.PointClamp;
 #pragma warning disable 0618 // disable obsolete warning
 			scene = Scene.createWithDefaultRenderer<MainMenuScene>(new Color(42, 40, 43));
 #pragma warning restore 0618
-			Core.debugRenderEnabled = true;
 		}
 	}
 }

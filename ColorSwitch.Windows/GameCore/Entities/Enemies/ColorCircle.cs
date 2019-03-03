@@ -9,6 +9,7 @@ namespace ColorSwitch.Windows.GameCore.Entities.Enemies {
 
 		private Texture2D circleTexture;
 		private Sprite circleSprite;
+		private float rotationSpeed = 1.5f;
 
 		public override Vector2 realSize => circleTexture.Bounds.Size.ToVector2();
 
@@ -21,11 +22,14 @@ namespace ColorSwitch.Windows.GameCore.Entities.Enemies {
 
 			var physics = new ColorCirclePhysics();
 			addComponent(physics);
+
+			if (Random.nextInt(2) == 0)
+				rotationSpeed = -rotationSpeed;
 		}
 
 		public override void update() {
 			base.update();			
-			transform.rotation += 1.2f * Time.deltaTime;
+			transform.rotation += rotationSpeed * Time.deltaTime;
 		}
 
 		public override void SendState(Entity sender) {

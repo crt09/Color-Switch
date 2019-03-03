@@ -16,16 +16,9 @@ namespace ColorSwitch.Windows.GameCore.UiLib.Entities {
 		private string normalButtonContent;
 		private string hoverButtonContent;
 
-		private float activationDelay;
-		private float totalDeltaTime;
-
 		public Button(string normalButtonContent, string hoverButtonContent) : base("button") {
 			this.normalButtonContent = normalButtonContent;
 			this.hoverButtonContent = hoverButtonContent;
-		}
-
-		public void setActivationDelay(float delay) {
-			activationDelay = delay;
 		}
 
 		public override void onAddedToScene() {
@@ -37,9 +30,6 @@ namespace ColorSwitch.Windows.GameCore.UiLib.Entities {
 		
 		public override void update() {
 			base.update();
-
-			totalDeltaTime += Time.deltaTime;
-			if (totalDeltaTime < activationDelay) return;
 
 			buttonSprite.subtexture = isHovering() ? hoverButtonSubtexture : normalButtonSubtexture;
 			if (Input.leftMouseButtonReleased && isHovering()) {

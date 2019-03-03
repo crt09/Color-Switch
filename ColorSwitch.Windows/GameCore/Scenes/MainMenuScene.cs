@@ -12,17 +12,20 @@ namespace ColorSwitch.Windows.GameCore.Scenes {
 		}
 
 		public override void initialize() {
-			var playButton = new Button("UI/play_button_normal", "UI/play_button_hover");
 			var halfScreen = camera.bounds.size * 0.5f;
-			playButton.position = new Vector2(halfScreen.X, halfScreen.Y);
+
+			var background = Background.Create("UI/menu_background");
+			addEntity(background);
+
+			var playButton = new Button("UI/play_button_normal", "UI/play_button_hover");
+			playButton.position = new Vector2(halfScreen.X, 380);
 			playButton.Click += PlayButtonOnClick;
-			playButton.setActivationDelay(TransitionManager.delay);
 			addEntity(playButton);
 
 			var storage = GameDataStorage.getInstance();
 			storage.Load();
-			var bestScoreText = new GameText($"Best score: {storage.BestScore.ToString()}");
-			bestScoreText.position = new Vector2(200, 100);
+			var bestScoreText = new GameText($"{storage.BestScore.ToString()}");
+			bestScoreText.position = new Vector2(halfScreen.X, 600);
 			addEntity(bestScoreText);
 		}
 

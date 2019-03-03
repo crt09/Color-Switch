@@ -8,7 +8,7 @@ namespace ColorSwitch.Windows.GameCore.Components {
 
 		private bool impulseHandling;
 		private float impulseAccelerator;
-		private static float ImpulseSpeed => 10f;
+		private const float IMPULSE_SPEED = 11f;
 
 		public PlayerPhysics() : base() { }
 
@@ -20,17 +20,21 @@ namespace ColorSwitch.Windows.GameCore.Components {
 	 
 		public void Update() {
 			if (!enabled) return;
+
+			var impulseMovement = new Vector2(0, IMPULSE_SPEED - impulseAccelerator) * Time.deltaTime * 45;
+			var impulseAcceleratorStep = 1.0f * Time.deltaTime * 60;
+
 			if (impulseHandling) {
-				if (impulseAccelerator < 10f) {
-					entity.transform.position -= new Vector2(0, ImpulseSpeed - impulseAccelerator) * Time.deltaTime * 50;
-					impulseAccelerator += 1.0f;
+				if (impulseAccelerator < IMPULSE_SPEED) {
+					entity.position -= impulseMovement;
+					impulseAccelerator += impulseAcceleratorStep;
 				} else {
 					impulseHandling = false;
 				}
 			} else {
-				entity.transform.position += new Vector2(0, ImpulseSpeed - impulseAccelerator) * Time.deltaTime * 50;
+				entity.position += impulseMovement;
 				if (impulseAccelerator > 0)
-					impulseAccelerator -= 0.5f;
+					impulseAccelerator -= impulseAcceleratorStep;
 			}			
 		}
 

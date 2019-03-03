@@ -18,7 +18,7 @@ namespace ColorSwitch.Windows.GameCore.Serialization {
 		private BinaryFormatter formatter;
 
 		[NonSerialized]
-		private string path = "storage.dat";
+		private string path = "Content/storage.dat";
 
 		public void Save() {
 			formatter = formatter ?? new BinaryFormatter();
@@ -32,7 +32,7 @@ namespace ColorSwitch.Windows.GameCore.Serialization {
 				Save();
 
 			formatter = formatter ?? new BinaryFormatter();
-			using (var stream = new FileStream(path, FileMode.OpenOrCreate)) {
+			using (var stream = new FileStream(path, FileMode.Open)) {
 				var obj = (GameDataStorage)formatter.Deserialize(stream);
 				
 				this.BestScore = obj.BestScore;

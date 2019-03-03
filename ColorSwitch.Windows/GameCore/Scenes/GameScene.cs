@@ -20,12 +20,9 @@ namespace ColorSwitch.Windows.GameCore.Scenes {
 			var entityBuilder = new EntityBuilder(player.touchableEntities);			
 			addEntity(entityBuilder);
 
-			initializeUi();	
-		}
-
-		private void initializeUi() {
-			var scoreText = new GameText("0");
-			scoreText.position = new Vector2(16, 16);
+			Player.score = 0;
+			var scoreText = new GameText($"{Player.score}", HorizontalAlign.Left);
+			scoreText.position = new Vector2(16, 16);			
 			player.AddScoreText(scoreText);
 			addEntity(scoreText);
 		}

@@ -8,7 +8,7 @@ using Nez;
 namespace ColorSwitch.Windows.GameCore.Entities {
 	public class EntityBuilder : Entity {
 
-		private const int ENTITY_INDENT = 50;
+		private const int ENTITY_INDENT = 60;
 
 		private List<TouchableEntity> touchableEntities;
 		public EntityBuilder(List<TouchableEntity> touchableEntities) : base("entity-builder") {
